@@ -16,26 +16,27 @@ public class InstructorServiceImpl implements InstructorService {
 
 	@Override
 	public List<Instructor> geyAllInstructors(Integer page, Integer size) {
+		page = (page -1) * size;
 		return instructorRepository.getAllInstructors(page, size);
 	}
 
 	@Override
 	public Instructor getInstructorById(Long instructorId) {
-		return null;
+		return instructorRepository.getInstructorById(instructorId);
 	}
 
 	@Override
 	public Instructor createInstructor(InstructorRequest request) {
-		return null;
+		return instructorRepository.createInstructor(request);
 	}
 
 	@Override
 	public Instructor updateInstructor(Long instructorId, InstructorRequest request) {
-		return null;
+		return instructorRepository.updateInstructor(instructorId,request);
 	}
 
 	@Override
 	public void deleteInstructor(Long instructorId) {
-
+		instructorRepository.deleteInstructor(instructorId);
 	}
 }
