@@ -34,3 +34,11 @@ VALUES
     (4, 4),
     (5, 2),
     (5, 5);
+
+
+INSERT INTO courses
+VALUES (default,'hjgjh', 1,'hjkh')
+RETURNING *;
+
+SELECT * FROM students_course sc
+INNER JOIN courses c ON sc.course_id = c.course_id WHERE c.course_id = 1;

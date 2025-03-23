@@ -14,7 +14,9 @@ public interface StudentRepository {
 			@Result(property = "studentId", column = "student_id"),
 			@Result(property = "studentName", column = "student_name"),
 			@Result(property = "email", column = "email"),
-			@Result(property = "phoneNumber", column = "phone_number")
+			@Result(property = "phoneNumber", column = "phone_number"),
+			@Result(property = "courses", column = "student_id"
+					, many = @Many(select = "com.example.homeworkspringboot002.repository.StudentCourseRepository.getCoursesByStudentId"))
 	})
 	@Select("""
 			SELECT * FROM students
@@ -47,7 +49,7 @@ public interface StudentRepository {
 			where student_id = #{student-id}
 			RETURNING *;
 			""")
-	Student updateStudent(@Param("student-id") Long studentId,@Param("request") StudentRequest studentRequest);
+	Student updateStudent(@Param("student-id") Long studentId, @Param("request") StudentRequest studentRequest);
 
 	@Delete("""
 			DELETE FROM students
